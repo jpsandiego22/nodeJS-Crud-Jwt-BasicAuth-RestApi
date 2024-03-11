@@ -1,5 +1,5 @@
 const db = require('../database');
-
+const singlequery = 'SELECT * FROM products where id= ?';
 const getAllData = async(req,res)=>{
     const query = 'SELECT * FROM products';
     db.query(query,(err,result,fields) => {
@@ -25,7 +25,7 @@ const getData = async(req,res)=>{
 
 const insertData = async(req,res)=>{
     const query = 'INSERT INTO products SET ?';
-    const singlequery = 'SELECT * FROM products where id= ?';
+
 
     try {
         db.query(query,req.body,(err,result) => {
@@ -46,17 +46,22 @@ const insertData = async(req,res)=>{
 
 const updateData = async(req,res)=>{
     const query = 'UPDATE products set name=?, category=?, description=? where id=?';
-    const singlequery = 'SELECT * FROM products where id= ?';
+    
     const data = req.body;
     try {
-        db.query(query,[data.name,data.category,data.description,data.id],(err,result) => {
-            if (err) throw res.send('dsadas1');
-            db.query(singlequery,data.id,(error,results,fields) => {
-                if (error) throw res.send('dsadas');
+        db.query(singlequery,data.id,(error,results,fields) => {
+            if (error) throw res.send(error);
+            if(!results.length) return  res.json({
+                status:'success',
+                message:'No record found in this ID: '+ data.id,
+                // data: results
+            });
+            db.query(query,[data.name,data.category,data.description,data.id],(err,result) => {
+            if (err) throw res.send(err);
                 res.json({
                     status:'success',
                     message:'Record has been updated.',
-                    data: results
+                    // data: result
                 });
             });
         });

@@ -28,8 +28,7 @@ app.use((req,res)=> {
         message: 'Invalid Request'
     });
 })
-// var port = ;
-console.log(process.env.APP_PORT);
+
 app.listen(process.env.APP_PORT, () => {
     console.log("Server started on port: ",process.env.APP_PORT);
 });
