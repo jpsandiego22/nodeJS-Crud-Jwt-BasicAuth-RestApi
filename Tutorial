@@ -9,3 +9,6 @@
 
 5. npm i --save-dev mysql
     - mySQL defendency in nodejs
+
+6. npm i body-parser
+    - get the body prameter in request

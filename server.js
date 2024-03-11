@@ -1,7 +1,6 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
-
-
 
 app.set('view engine','ejs');
 app.use(logger);
@@ -29,8 +28,9 @@ app.use((req,res)=> {
         message: 'Invalid Request'
     });
 })
-
-app.listen(3000, () => {
-    console.log('Server started on port 3000.');
+// var port = ;
+console.log(process.env.APP_PORT);
+app.listen(process.env.APP_PORT, () => {
+    console.log("Server started on port: ",process.env.APP_PORT);
 });
 
