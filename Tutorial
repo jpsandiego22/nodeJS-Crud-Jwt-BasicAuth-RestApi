@@ -1,0 +1,11 @@
+1. npm init -y
+2. npm i express
+3. npm i --save-dev nodemon
+    - add this in package.json at the script part
+        "start": "nodemon server.js"
+
+4. npm i ejs
+    - generate dynamic HTML content by embedding JavaScript code within your HTML templates
+
+5. npm i --save-dev mysql
+    - mySQL defendency in nodejs
