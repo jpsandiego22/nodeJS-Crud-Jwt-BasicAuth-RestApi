@@ -1,14 +1,18 @@
 const db = require('../database');
 const singlequery = 'SELECT * FROM products where id= ?';
 const getAllData = async(req,res)=>{
-    const query = 'SELECT * FROM products';
-    db.query(query,(err,result,fields) => {
-        if (err) throw res.send(err);
-        res.json({
-            status:'success',
-            data: result
+    try{
+        const query = 'SELECT * FROM products';
+        db.query(query,(err,result,fields) => {
+            if (err) throw res.send(err);
+            res.json({
+                status:'success',
+                data: result
+            });
         });
-    });
+    } catch (error) {
+        console.log(error)
+    }
 }
 const getData = async(req,res)=>{
     const query = 'SELECT * FROM products where id= ?';

@@ -12,3 +12,14 @@
 
 6. npm i body-parser
     - get the body prameter in request
+
+7. npm i dotenv
+    - hide all the connectionstring when uploading in repository
+
+8. npm i jsonwebtoken
+    - for authorization per request
+
+9. npm i uuid
+    - Generate unique identifier
+
+
